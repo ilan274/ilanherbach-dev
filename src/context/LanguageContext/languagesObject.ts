@@ -13,7 +13,7 @@ export interface ILanguagesProps {
 
 export const languagesObject = {
   en: {
-    title: "Hey, I'm Ilan",
+    title: "Hey, I'm Ilan :)",
     subtitle: 'Back and front-end developer',
     copyright: 'Copyright © 2023 Ilan Herbach. All rights reserved.',
   },

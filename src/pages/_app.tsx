@@ -2,6 +2,9 @@ import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import '../styles/styles.css';
 import { LanguageProvider } from '../context/LanguageContext/LanguageContext';
+import { Header } from 'components/Header';
+import { CopyrightComponent } from 'components/Copyright';
+import { LanguageSwitch } from 'components/LanguageSwitch';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -14,13 +17,16 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div>
       <LanguageProvider>
+      <LanguageSwitch />
+        <Header />
         <Component {...pageProps} />
-      </LanguageProvider>
-      {/* <BottomNav>
+        {/* <BottomNav>
         <BottomNavigationAction label='Recents' icon={<Restore />} />
         <BottomNavigationAction label='Favorites' icon={<Favorite />} />
         <BottomNavigationAction label='Nearby' icon={<LocationOn />} />
       </BottomNav> */}
+        <CopyrightComponent />
+      </LanguageProvider>
     </div>
   );
 }

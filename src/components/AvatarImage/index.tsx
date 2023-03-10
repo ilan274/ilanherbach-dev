@@ -1,5 +1,7 @@
 import { Avatar, styled } from '@mui/material';
 import { Box } from '@mui/system';
+import { LanguageContext } from '../../context/LanguageContext/LanguageContext';
+import { useContext, useMemo } from 'react';
 
 const AvatarContainer = styled(Box)({
   display: 'flex',
@@ -12,12 +14,16 @@ const AvatarStyled = styled(Avatar)({
 });
 
 export const AvatarImage = () => {
+  const { isMobile } = useContext(LanguageContext);
+
+  const imageSize = isMobile ? 42 : 84
+
   return (
-    <AvatarContainer>
+    <AvatarContainer className=''>
       <AvatarStyled
         alt='Ilan Herbach'
         src={'/eu.jpg'}
-        sx={{ width: 84, height: 84 }}
+        sx={{ width: imageSize, height: imageSize }}
       />
     </AvatarContainer>
   );
