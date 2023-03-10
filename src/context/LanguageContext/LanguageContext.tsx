@@ -30,7 +30,7 @@ interface Props {
 export const LanguageProvider = ({ children }: Props) => {
   const [languageSelected, setLanguageSelected] =
     useState<keyof ILanguagesProps>(defaultLanguage);
-  const isMobile = useMediaQuery('(min-width: 500px)');
+  const isMobile = useMediaQuery('(max-width: 500px)');
 
   const handleLanguage = (language: keyof ILanguagesProps) => {
     setLanguageSelected(language);

@@ -7,8 +7,8 @@ import brazilSvg from './brazil.svg';
 import usaSvg from './usa.svg';
 
 const ImageContainerStyled = styled(Box)({
-  bottom: 20,
-  right: 20,
+  bottom: 35,
+  right: 40,
   position: 'fixed',
   display: 'flex',
   width: '80px',

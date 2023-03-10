@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GitHub, LinkedIn } from '@mui/icons-material';
 import { Box, styled } from '@mui/material';
 import Link from 'next/link';
+import { LanguageContext } from '../../context/LanguageContext/LanguageContext';
 
-const StyledIconContainer = styled(Box)({
-  position: 'fixed',
-  top: 10,
-  right: 40,
-  display: 'flex',
-  justifyContent: 'space-between',
-  width: '80px',
+const StyledIconContainer = styled(Box)(({ className }) => {
+  return {
+    position: 'fixed',
+    top: 10,
+    right: 40,
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: (className === 'mobile' && 60) || 80,
+  };
 });
 
 const StyledGithubIcon = styled(GitHub)({
@@ -30,21 +33,23 @@ const LinkStyled = styled(Link)({
 });
 
 export const SocialMedia = () => {
+  const { isMobile } = useContext(LanguageContext);
+
   return (
-    <StyledIconContainer>
+    <StyledIconContainer className={(isMobile && 'mobile') || ''}>
       <LinkStyled
         href='https://github.com/ilan274'
         target='_blank'
         rel='noopener noreferrer'
       >
-        <StyledGithubIcon fontSize='large' />
+        <StyledGithubIcon fontSize={isMobile ? 'medium' : 'large'} />
       </LinkStyled>
       <LinkStyled
         href='https://www.linkedin.com/in/ilan-herbach'
         target='_blank'
         rel='noopener noreferrer'
       >
-        <StyledLinkedinIcon fontSize='large' />
+        <StyledLinkedinIcon fontSize={isMobile ? 'medium' : 'large'} />
       </LinkStyled>
     </StyledIconContainer>
   );
