@@ -38,7 +38,7 @@ export const content: Record<Locale, Content> = {
       title: 'I like building things that work well and feel good to use.',
       paragraphs: [
         "I've been a developer since 2020 and today I work at MahiGaming. I'm full stack and I enjoy the whole process: modeling data, designing APIs and building interfaces people actually like using.",
-        'Along the way I worked on payment flows (tokenization, billing, refunds) with a strong focus on security and compliance, microservices with different databases, real-time apps and design systems.',
+        'Along the way I worked on payment flows (tokenization, billing, refunds) with a strong focus on security and compliance, microservices with different databases and real-time apps.',
         "Lately I've been working a lot with AI: search with embeddings and RAG, LLM integrations, and agents that take care of the repetitive parts of development.",
       ],
       languagesLabel: 'Languages I speak',
@@ -81,7 +81,7 @@ export const content: Record<Locale, Content> = {
       title: 'Gosto de construir coisas que funcionam bem e são boas de usar.',
       paragraphs: [
         'Trabalho com desenvolvimento desde 2020 e hoje estou na MahiGaming. Sou full stack e gosto do processo inteiro: modelar dados, desenhar APIs e criar interfaces que as pessoas gostam de usar.',
-        'No caminho trabalhei com fluxos de pagamento (tokenização, cobrança, reembolsos) com foco em segurança e compliance, microsserviços com bancos diferentes, aplicações em tempo real e design systems.',
+        'No caminho trabalhei com fluxos de pagamento (tokenização, cobrança, reembolsos) com foco em segurança e compliance, microsserviços com bancos diferentes e aplicações em tempo real.',
         'Ultimamente tenho trabalhado bastante com IA: busca com embeddings e RAG, integração com LLMs e agentes que cuidam das partes repetitivas do desenvolvimento.',
       ],
       languagesLabel: 'Idiomas que falo',
