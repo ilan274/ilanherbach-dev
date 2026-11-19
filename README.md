@@ -4,9 +4,11 @@ Personal portfolio — Next.js 14 + a real-time WebGL particle galaxy built with
 
 ## Getting started
 
+Requires [pnpm](https://pnpm.io) (the version is pinned in `package.json` via `packageManager`, so `corepack enable` picks it up automatically).
+
 ```bash
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 Open http://localhost:3000.
