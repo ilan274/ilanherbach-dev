@@ -17,9 +17,9 @@ export interface Content {
   footer: { rights: string; built: string };
 }
 
-const FRONT = ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Three.js', 'HTML/CSS', 'Design systems'];
+const FRONT = ['TypeScript', 'JavaScript', 'React', 'Next.js', 'HTML/CSS'];
 const DATA = ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'OracleDB'];
-const CLOUD = ['AWS Lambda', 'API Gateway', 'Route 53', 'KMS', 'Sentry', 'Git'];
+const CLOUD = ['AWS Lambda', 'API Gateway', 'Route 53', 'KMS', 'Git'];
 
 export const content: Record<Locale, Content> = {
   en: {
@@ -49,7 +49,7 @@ export const content: Record<Locale, Content> = {
       title: 'What I work with',
       groups: [
         { label: 'Front-end', items: FRONT },
-        { label: 'Back-end', items: ['Node.js', 'Express', 'REST APIs', 'Microservices', 'Socket.IO', 'Payment integrations'] },
+        { label: 'Back-end', items: ['Node.js', 'Express', 'Fastify', 'REST APIs', 'Microservices', 'Socket.IO', 'Payment integrations'] },
         { label: 'Databases', items: DATA },
         { label: 'Cloud and tools', items: CLOUD },
         {
@@ -92,7 +92,7 @@ export const content: Record<Locale, Content> = {
       title: 'O que eu uso',
       groups: [
         { label: 'Front-end', items: FRONT },
-        { label: 'Back-end', items: ['Node.js', 'Express', 'APIs REST', 'Microsserviços', 'Socket.IO', 'Integração de pagamentos'] },
+        { label: 'Back-end', items: ['Node.js', 'Express', 'Fastify', 'APIs REST', 'Microsserviços', 'Socket.IO', 'Integração de pagamentos'] },
         { label: 'Bancos de dados', items: DATA },
         { label: 'Cloud e ferramentas', items: CLOUD },
         {
