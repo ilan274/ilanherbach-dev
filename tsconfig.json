@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "lib": [
       "dom",
       "dom.iterable",
@@ -19,22 +19,11 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "images/*": [
-        "./src/images/*"
-      ],
-      "components/*": [
-        "./src/components/*"
-      ],
-      "pages/*": [
-        "./src/pages/*"
-      ],
-      "api/*": [
-        "./src/pages/api/*"
-      ],
-      "styles/*": [
-        "./src/styles/*"
+      "@/*": [
+        "./src/*"
       ]
-    }
+    },
+    "baseUrl": "."
   },
   "include": [
     "next-env.d.ts",

@@ -1,32 +1,17 @@
 import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
-import '../styles/styles.css';
-import { LanguageProvider } from '../context/LanguageContext/LanguageContext';
-import { Header } from 'components/Header';
-import { CopyrightComponent } from 'components/Copyright';
-import { LanguageSwitch } from 'components/LanguageSwitch';
+import { JetBrains_Mono, Space_Grotesk } from 'next/font/google';
+import { LanguageProvider } from '@/i18n/LanguageContext';
+import '@/styles/globals.css';
+
+const display = Space_Grotesk({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-display' });
+const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono' });
 
 export default function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    document.body.style.backgroundColor = '#19181c';
-    return () => {
-      document.body.style.backgroundColor = '#19181c';
-    };
-  }, []);
-
   return (
-    <div>
-      <LanguageProvider>
-      <LanguageSwitch />
-        <Header />
+    <LanguageProvider>
+      <div className={`${display.variable} ${mono.variable} app`}>
         <Component {...pageProps} />
-        {/* <BottomNav>
-        <BottomNavigationAction label='Recents' icon={<Restore />} />
-        <BottomNavigationAction label='Favorites' icon={<Favorite />} />
-        <BottomNavigationAction label='Nearby' icon={<LocationOn />} />
-      </BottomNav> */}
-        <CopyrightComponent />
-      </LanguageProvider>
-    </div>
+      </div>
+    </LanguageProvider>
   );
 }
