@@ -551,6 +551,10 @@ main,
   transition: border-color 0.4s, transform 0.4s var(--ease);
 }
 
+.stack-group:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .stack-group:hover {
   border-color: var(--border-strong);
   transform: translateY(-4px);

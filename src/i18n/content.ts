@@ -17,10 +17,9 @@ export interface Content {
   footer: { rights: string; built: string };
 }
 
-// TODO(ilan): revisar as tecnologias de front-end, back-end e ferramentas.
-const FRONT = ['TypeScript', 'React', 'Next.js', 'Three.js', 'HTML/CSS'];
-const BACK = ['Node.js', 'Express', 'MongoDB', 'SQL', 'REST APIs'];
-const TOOLS = ['Git', 'Docker', 'Jest', 'Linux', 'CI/CD'];
+const FRONT = ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Three.js', 'HTML/CSS', 'Design systems'];
+const DATA = ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'OracleDB'];
+const CLOUD = ['AWS Lambda', 'API Gateway', 'Route 53', 'KMS', 'Sentry', 'Git'];
 
 export const content: Record<Locale, Content> = {
   en: {
@@ -38,7 +37,8 @@ export const content: Record<Locale, Content> = {
       kicker: 'About me',
       title: 'I like building things that work well and feel good to use.',
       paragraphs: [
-        "I'm a full stack developer and I enjoy the whole process: modeling data, designing APIs and building interfaces people actually like using.",
+        "I've been a developer since 2020 and today I work at MahiGaming. I'm full stack and I enjoy the whole process: modeling data, designing APIs and building interfaces people actually like using.",
+        'Along the way I worked on payment flows (tokenization, billing, refunds) with a strong focus on security and compliance, microservices with different databases, real-time apps and design systems.',
         "Lately I've been working a lot with AI: search with embeddings and RAG, LLM integrations, and agents that take care of the repetitive parts of development.",
       ],
       languagesLabel: 'Languages I speak',
@@ -49,12 +49,13 @@ export const content: Record<Locale, Content> = {
       title: 'What I work with',
       groups: [
         { label: 'Front-end', items: FRONT },
-        { label: 'Back-end', items: BACK },
+        { label: 'Back-end', items: ['Node.js', 'Express', 'REST APIs', 'Microservices', 'Socket.IO', 'Payment integrations'] },
+        { label: 'Databases', items: DATA },
+        { label: 'Cloud and tools', items: CLOUD },
         {
           label: 'AI',
           items: ['RAG', 'Vector search', 'Embeddings', 'LLM APIs', 'MCP', 'AI agents', 'Skills automation'],
         },
-        { label: 'Tools', items: TOOLS },
       ],
     },
     contact: {
@@ -79,7 +80,8 @@ export const content: Record<Locale, Content> = {
       kicker: 'Sobre mim',
       title: 'Gosto de construir coisas que funcionam bem e são boas de usar.',
       paragraphs: [
-        'Sou desenvolvedor full stack e gosto do processo inteiro: modelar dados, desenhar APIs e criar interfaces que as pessoas gostam de usar.',
+        'Trabalho com desenvolvimento desde 2020 e hoje estou na MahiGaming. Sou full stack e gosto do processo inteiro: modelar dados, desenhar APIs e criar interfaces que as pessoas gostam de usar.',
+        'No caminho trabalhei com fluxos de pagamento (tokenização, cobrança, reembolsos) com foco em segurança e compliance, microsserviços com bancos diferentes, aplicações em tempo real e design systems.',
         'Ultimamente tenho trabalhado bastante com IA: busca com embeddings e RAG, integração com LLMs e agentes que cuidam das partes repetitivas do desenvolvimento.',
       ],
       languagesLabel: 'Idiomas que falo',
@@ -90,12 +92,13 @@ export const content: Record<Locale, Content> = {
       title: 'O que eu uso',
       groups: [
         { label: 'Front-end', items: FRONT },
-        { label: 'Back-end', items: BACK },
+        { label: 'Back-end', items: ['Node.js', 'Express', 'APIs REST', 'Microsserviços', 'Socket.IO', 'Integração de pagamentos'] },
+        { label: 'Bancos de dados', items: DATA },
+        { label: 'Cloud e ferramentas', items: CLOUD },
         {
           label: 'IA',
           items: ['RAG', 'Busca vetorial', 'Embeddings', 'APIs de LLM', 'MCP', 'Agentes de IA', 'Automação com skills'],
         },
-        { label: 'Ferramentas', items: TOOLS },
       ],
     },
     contact: {
