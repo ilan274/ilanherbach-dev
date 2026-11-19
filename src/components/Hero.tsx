@@ -37,10 +37,10 @@ export const Hero = () => {
         </motion.p>
 
         <motion.div className="hero-actions" {...item(5)}>
-          <a href="#projects" className="btn btn-primary">
+          <a href="#contact" className="btn btn-primary">
             {t.hero.ctaPrimary}
           </a>
-          <a href="#contact" className="btn btn-ghost">
+          <a href="#about" className="btn btn-ghost">
             {t.hero.ctaSecondary}
           </a>
           <div className="hero-social">

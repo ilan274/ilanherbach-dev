@@ -16,13 +16,12 @@ export const Nav = () => {
   const items = [
     ['#about', t.nav.about],
     ['#stack', t.nav.stack],
-    ['#projects', t.nav.projects],
     ['#contact', t.nav.contact],
   ];
 
   return (
     <header className={`nav${scrolled ? ' is-scrolled' : ''}`}>
-      <a href="#top" className="nav-logo" aria-label="Ilan Herbach — home">
+      <a href="#top" className="nav-logo" aria-label="Ilan Herbach, home">
         ih<span>.</span>
       </a>
       <nav aria-label="Main">

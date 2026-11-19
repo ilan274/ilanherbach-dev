@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Nav } from '@/components/Nav';
 import { Hero } from '@/components/Hero';
-import { About, Contact, Footer, Projects, Stack } from '@/components/Sections';
+import { About, Contact, Footer, Stack } from '@/components/Sections';
 
 // WebGL only runs in the browser.
 const Scene = dynamic(() => import('@/three/Scene'), { ssr: false });
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{`Ilan Herbach — ${t.hero.role}`}</title>
+        <title>{`Ilan Herbach | ${t.hero.role}`}</title>
         <meta name="description" content={t.hero.tagline} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0b0b0e" />
@@ -28,7 +28,6 @@ export default function Home() {
         <Hero />
         <About />
         <Stack />
-        <Projects />
         <Contact />
       </main>
       <Footer />

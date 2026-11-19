@@ -1,6 +1,6 @@
-import { MouseEvent, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { ArrowIcon, GitHubIcon, LinkedInIcon } from './Icons';
+import { GitHubIcon, LinkedInIcon } from './Icons';
 import { LINKS } from './links';
 import { Reveal } from './Reveal';
 
@@ -17,34 +17,26 @@ const Section = ({ id, children }: { id: string; children: ReactNode }) => (
   </section>
 );
 
-/** Card with a glow that follows the cursor. */
-const trackGlow = (e: MouseEvent<HTMLElement>) => {
-  const el = e.currentTarget;
-  const r = el.getBoundingClientRect();
-  el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-  el.style.setProperty('--my', `${e.clientY - r.top}px`);
-};
-
 export const About = () => {
   const { t } = useLanguage();
   return (
     <Section id="about">
       <SectionHeading kicker={t.about.kicker} title={t.about.title} />
-      <div className="about-grid">
-        <Reveal className="about-text" delay={0.1}>
-          {t.about.paragraphs.map((p) => (
-            <p key={p}>{p}</p>
-          ))}
-        </Reveal>
-        <ul className="stats">
-          {t.about.stats.map((s, i) => (
-            <Reveal as="li" key={s.label} delay={0.15 + i * 0.08} className="stat glass">
-              <strong>{s.value}</strong>
-              <span>{s.label}</span>
-            </Reveal>
+      <Reveal className="about-text" delay={0.1}>
+        {t.about.paragraphs.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+      </Reveal>
+      <Reveal className="languages" delay={0.2}>
+        <h3>{t.about.languagesLabel}</h3>
+        <ul className="chips">
+          {t.about.languages.map((l) => (
+            <li key={l} className="chip">
+              {l}
+            </li>
           ))}
         </ul>
-      </div>
+      </Reveal>
     </Section>
   );
 };
@@ -65,42 +57,6 @@ export const Stack = () => {
                 </li>
               ))}
             </ul>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-  );
-};
-
-export const Projects = () => {
-  const { t } = useLanguage();
-  return (
-    <Section id="projects">
-      <SectionHeading kicker={t.projects.kicker} title={t.projects.title} />
-      <div className="projects-grid">
-        {t.projects.items.map((p, i) => (
-          <Reveal as="article" key={p.title} delay={i * 0.1} className="project-wrap">
-            <a
-              className="project glass"
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onMouseMove={trackGlow}
-            >
-              <span className="project-index">0{i + 1}</span>
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
-              <ul className="chips chips-sm">
-                {p.tags.map((tag) => (
-                  <li key={tag} className="chip">
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-              <span className="project-link">
-                {t.projects.viewOn} <ArrowIcon />
-              </span>
-            </a>
           </Reveal>
         ))}
       </div>

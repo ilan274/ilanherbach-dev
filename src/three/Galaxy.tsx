@@ -3,15 +3,8 @@ import { MutableRefObject, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 import { galaxyFragment, galaxyVertex } from './shaders';
 
-export interface PointerState {
-  x: number; // NDC -1..1
-  y: number;
-  active: number; // 0..1, eased presence of the pointer
-}
-
 interface Props {
   count: number;
-  pointer: MutableRefObject<PointerState>;
   scroll: MutableRefObject<number>;
   animate: boolean;
 }
@@ -81,10 +74,10 @@ function buildDust(count: number) {
   return geometry;
 }
 
-export function Galaxy({ count, pointer, scroll, animate }: Props) {
+export function Galaxy({ count, scroll, animate }: Props) {
   const group = useRef<THREE.Group>(null);
   const dust = useRef<THREE.Points>(null);
-  const { size, viewport, camera } = useThree();
+  const { size, viewport } = useThree();
 
   const geometry = useMemo(() => buildGalaxy(count), [count]);
   const dustGeometry = useMemo(() => buildDust(Math.round(count / 6)), [count]);
@@ -94,9 +87,6 @@ export function Galaxy({ count, pointer, scroll, animate }: Props) {
       uTime: { value: 0 },
       uSize: { value: 40 },
       uScroll: { value: 0 },
-      uMouse: { value: new THREE.Vector2(10, 10) },
-      uAspect: { value: 1 },
-      uMouseForce: { value: 0 },
       uOpacity: { value: 1 },
     }),
     []
@@ -105,19 +95,15 @@ export function Galaxy({ count, pointer, scroll, animate }: Props) {
   const isNarrow = size.width < 768;
   const smoothScroll = useRef(0);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     const dt = Math.min(delta, 0.05);
     if (animate) uniforms.uTime.value += dt;
 
     const s = scroll.current;
     smoothScroll.current = THREE.MathUtils.damp(smoothScroll.current, s, 4, dt);
     const ss = smoothScroll.current;
-    const p = pointer.current;
 
     uniforms.uSize.value = (isNarrow ? 34 : 44) * viewport.dpr;
-    uniforms.uAspect.value = size.width / size.height;
-    uniforms.uMouse.value.set(p.x, p.y);
-    uniforms.uMouseForce.value = p.active;
     uniforms.uScroll.value = Math.min(ss, 1.5);
     // Fade the galaxy behind content so text stays readable.
     uniforms.uOpacity.value = THREE.MathUtils.lerp(1, 0.45, Math.min(ss, 1));
@@ -127,15 +113,10 @@ export function Galaxy({ count, pointer, scroll, animate }: Props) {
       const targetX = isNarrow ? 0 : THREE.MathUtils.lerp(0, 3.2, Math.min(ss, 1));
       group.current.position.x = THREE.MathUtils.damp(group.current.position.x, targetX, 3, dt);
       group.current.rotation.y = ss * 0.9;
-      group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, 0.42 + p.y * 0.08, 3, dt);
-      group.current.rotation.z = THREE.MathUtils.damp(group.current.rotation.z, -0.18 - p.x * 0.08, 3, dt);
+      group.current.rotation.x = 0.42;
+      group.current.rotation.z = -0.18;
     }
     if (dust.current && animate) dust.current.rotation.y += dt * 0.01;
-
-    // Subtle camera parallax.
-    camera.position.x = THREE.MathUtils.damp(camera.position.x, p.x * 0.4, 2, dt);
-    camera.position.y = THREE.MathUtils.damp(camera.position.y, 1.6 + p.y * 0.3, 2, dt);
-    camera.lookAt(0, 0, 0);
   });
 
   return (
